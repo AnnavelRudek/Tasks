@@ -25,7 +25,7 @@ public class TaskController {
 
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "udpateTask")
+    @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
     public TaskDto updateTask(TaskDto task)
         return new TaskDto(1L, "edited test title", "test content");
 
