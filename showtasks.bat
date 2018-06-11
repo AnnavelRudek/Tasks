@@ -12,7 +12,7 @@ goto fail
 
 : fail
 echo.
-echo There were errors...
+echo An error occured...
 
 : end
 echo.
