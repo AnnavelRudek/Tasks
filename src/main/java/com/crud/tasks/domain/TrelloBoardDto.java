@@ -1,9 +1,11 @@
 package com.crud.tasks.domain;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Value;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 public class TrelloBoardDto {

@@ -15,14 +15,17 @@ import java.util.List;
 @Component
 public class TrelloClient {
 
-    @Value("${trello.api.endpoint.prod}")
-    private String trelloApiEndpoint;
+   // @Value("${trello.api.endpoint.prod}")
+    private String trelloApiEndpoint="https://api.trello.com/1";
 
-    @Value("${trello.app.key}")
-    private String trelloAppKey;
+   //@Value("${trello.app.key}")
+    private String trelloAppKey="b7567eade6ed7da83c59274875a4285b";
 
-    @Value("${trello.app.token}")
-    private String trelloToken;
+   //@Value("${token}")
+    private String trelloToken="149742642e9de1de031a05ea2575831c6a2702e3123c6595e1a316f9afd0d7a6";
+
+    //@Value("${trello.app.username}")
+    private String trelloUsername="annapiwowarczyk1";
 
 
     @Autowired
@@ -30,9 +33,10 @@ public class TrelloClient {
 
     public List<TrelloBoardDto> getTrelloBoards() {
 
-        URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members/nataliagajewska1/boards")
+        URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members" + trelloUsername + "/boards")
                 .queryParam("key", trelloAppKey)
                 .queryParam("token", trelloToken)
+                .queryParam("username", trelloUsername)
                 .queryParam("fields", "name,id").build().encode().toUri();
 
         TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
