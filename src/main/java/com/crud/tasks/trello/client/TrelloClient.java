@@ -33,16 +33,14 @@ public class TrelloClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    public List<TrelloBoardDto> getTrelloBoards() {
-
-        @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
+    @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
 
         public List<TrelloBoardDto> getTrelloBoards () {
             List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards().stream().filter("TUTAJ FILTRACJA").collect(Collectors.toList());
 
             return trelloBoards;
         }
-    }
+
 
     private URI getTrelloBoardsUrl() {
         URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members/annapiwowarczyk1/boards")
