@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -13,22 +14,23 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
 public class TrelloClient {
 
-   //@Value("${trello.api.endpoint.prod}")
-    private String trelloApiEndpoint="https://api.trello.com/1";
+   @Value("${trello.api.endpoint.prod}")
+    private String trelloApiEndpoint;
 
-   //@Value("${trello.app.key}")
-    private String trelloAppKey="b7567eade6ed7da83c59274875a4285b";
+   @Value("${trello.app.key}")
+    private String trelloAppKey;
 
-   //@Value("${token}")
-    private String trelloToken="149742642e9de1de031a05ea2575831c6a2702e3123c6595e1a316f9afd0d7a6";
+   @Value("${token}")
+    private String trelloToken;
 
-    //@Value("${trello.app.username}")
-    private String trelloUsername="annapiwowarczyk1";
+    @Value("${trello.app.username}")
+    private String trelloUsername;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -36,10 +38,24 @@ public class TrelloClient {
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
 
         public List<TrelloBoardDto> getTrelloBoards () {
-            List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards().stream().filter("TUTAJ FILTRACJA").collect(Collectors.toList());
+
+            try {
+                TrelloBoardDto[] boardsResponse = restTemplate.getForObject(getTrelloBoardsUrl(), TrelloBoardDto[].class);
+
+// tutaj należy dopisać punkt 4 zadania z rozwiązaniem opartym o Optional :) (klasa Optiona java)
+
+            } catch (RestClientException e) {
+                return new ArrayList<>();
+            }
+
+        }
+
+
+        //poprzednia podpowiedz
+           /* List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards().stream().filter("TUTAJ FILTRACJA").collect(Collectors.toList());
 
             return trelloBoards;
-        }
+        }*/
 
 
     private URI getTrelloBoardsUrl() {
@@ -47,8 +63,8 @@ public class TrelloClient {
                 .queryParam("key", trelloAppKey)
                 .queryParam("token", trelloToken)
                 .queryParam("username", trelloUsername)
-                .queryParam("fields", "name,id")
-                .queryParam("lists", "all").build().encode().toUri();
+                .queryParam("fields", "name,id").build().encode().toUri();
+                //18.3 .queryParam("lists", "all")
 
         return url;
     }

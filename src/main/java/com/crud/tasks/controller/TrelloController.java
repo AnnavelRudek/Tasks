@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/trello")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class TrelloController {
 
     @Autowired
@@ -21,8 +21,15 @@ public class TrelloController {
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public void getTrelloBoards() {
 
-        // GET request
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
+
+        trelloBoards.forEach(trelloBoardDto ->
+                System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
+
+
+//18.3
+      /*  // GET request
+
 
         trelloBoards.forEach(trelloBoardDto -> {
 
@@ -33,7 +40,7 @@ public class TrelloController {
             trelloBoardDto.getLists().forEach(trelloList ->
                     System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
 
-        });
+        });*/
 
     }
 }
