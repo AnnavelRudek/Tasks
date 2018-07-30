@@ -25,6 +25,9 @@ public class TrelloController {
 
         trelloBoards.forEach(trelloBoardDto ->
                 System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
+    }
+
+}
 
 
 //18.3
@@ -42,5 +45,3 @@ public class TrelloController {
 
         });*/
 
-    }
-}

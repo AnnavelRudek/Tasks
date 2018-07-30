@@ -42,22 +42,11 @@ public class TrelloClient {
             try {
                 TrelloBoardDto[] boardsResponse = restTemplate.getForObject(getTrelloBoardsUrl(), TrelloBoardDto[].class);
 
-// tutaj należy dopisać punkt 4 zadania z rozwiązaniem opartym o Optional :) (klasa Optiona java)
                 return Arrays.asList(Optional.ofNullable(boardsResponse).orElse(new TrelloBoardDto[0]));
             } catch (RestClientException e) {
                 return new ArrayList<>();
             }
-
-
         }
-
-
-        //poprzednia podpowiedz
-           /* List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards().stream().filter("TUTAJ FILTRACJA").collect(Collectors.toList());
-
-            return trelloBoards;
-        }*/
-
 
     private URI getTrelloBoardsUrl() {
         URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members/annapiwowarczyk1/boards")
