@@ -26,7 +26,7 @@ public class TrelloClient {
    @Value("${trello.app.key}")
     private String trelloAppKey;
 
-   @Value("${token}")
+   @Value("${trello.app.token}")
     private String trelloToken;
 
     @Value("${trello.app.username}")
@@ -43,10 +43,11 @@ public class TrelloClient {
                 TrelloBoardDto[] boardsResponse = restTemplate.getForObject(getTrelloBoardsUrl(), TrelloBoardDto[].class);
 
 // tutaj należy dopisać punkt 4 zadania z rozwiązaniem opartym o Optional :) (klasa Optiona java)
-
+                return Arrays.asList(Optional.ofNullable(boardsResponse).orElse(new TrelloBoardDto[0]));
             } catch (RestClientException e) {
                 return new ArrayList<>();
             }
+
 
         }
 
