@@ -29,13 +29,13 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile group: 'org.projectlombok', name: 'lombok', version: '1.16.22'
-	//compile ('mysql:mysql-connector-java') //bez heroku
+	compile ('mysql:mysql-connector-java') //bez heroku
 
 	//wysyłanie maili z aplikacji
 	compile('org.springframework.boot:spring-boot-starter-mail:2.0.4.RELEASE')
 
 	//heroku
-	compile ('org.postgresql:postgresql')
+	//compile ('org.postgresql:postgresql')
 
 	compile ('org.springframework.boot:spring-boot-starter-data-jpa')
 
