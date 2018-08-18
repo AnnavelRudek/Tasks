@@ -1,9 +1,10 @@
-package com.crud.tasks.trello;
+package com.crud.tasks.trello.client;
 
 import com.crud.tasks.domain.CreatedTrelloCardDto;
 import com.crud.tasks.domain.TrelloBoardDto;
 
 import com.crud.tasks.domain.TrelloCardDto;
+import com.crud.tasks.trello.TrelloConfig;
 import com.crud.tasks.trello.client.TrelloClient;
 import org.junit.Before;
 import org.junit.Test;
