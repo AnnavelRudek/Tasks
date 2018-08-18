@@ -1,4 +1,4 @@
-package com.crud.tasks.trello.client;
+package com.crud.tasks.trello;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

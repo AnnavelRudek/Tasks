@@ -3,7 +3,7 @@ package com.crud.tasks.controller;
 
 import com.crud.tasks.domain.TrelloBoardDto;
 
-import com.crud.tasks.trello.client.trello.facade.TrelloFacade;
+import com.crud.tasks.trello.facade.TrelloFacade;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

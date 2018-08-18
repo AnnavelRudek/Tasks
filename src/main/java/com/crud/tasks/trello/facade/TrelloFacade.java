@@ -1,9 +1,9 @@
-package com.crud.tasks.trello.client.trello.facade;
+package com.crud.tasks.trello.facade;
 
 import com.crud.tasks.domain.*;
 import com.crud.tasks.mapper.TrelloMapper;
 import com.crud.tasks.service.TrelloService;
-import com.crud.tasks.trello.client.trello.validator.TrelloValidator;
+import com.crud.tasks.trello.validator.TrelloValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
