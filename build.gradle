@@ -47,6 +47,11 @@ dependencies {
 
 	//Transformowanie obiektu na JSON'a
 	compile ('com.google.code.gson:gson:2.8.2')
+
+	//Actutator
+	compile('org.springframework.boot:spring-boot-starter-mail')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+
 	//Thymeleaf wysyłanie maili
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
