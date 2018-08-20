@@ -47,6 +47,8 @@ dependencies {
 
 	//Transformowanie obiektu na JSON'a
 	compile ('com.google.code.gson:gson:2.8.2')
+	//Thymeleaf wysyłanie maili
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
 	//providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 
