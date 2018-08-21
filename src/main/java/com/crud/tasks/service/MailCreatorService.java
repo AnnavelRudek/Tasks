@@ -12,8 +12,6 @@ import org.thymeleaf.context.Context;
 @Service
 public class MailCreatorService {
 
-    @Autowired
-    private AdminConfig adminConfig;
 
     @Autowired
     @Qualifier("templateEngine")
@@ -21,16 +19,6 @@ public class MailCreatorService {
     public String buildTrelloCardEmail(String message) {
         Context context = new Context();
         context.setVariable("message", message);
-        context.setVariable("tasks_url", "htpp://localhost:8888/crud");
-        context.setVariable("button", "Visit website!");
-        context.setVariable("company_details", "Company: We are not a Cult! " +
-                "Address: Puerto Rico, " +
-                "phone: 123456789, " +
-                "email: bleble@blevle.com");
-        context.setVariable("goodbye_message", "See you!");
-        context.setVariable("show_button", false);
-        context.setVariable("is_friend", false);
-        context.setVariable("admin_config", adminConfig);
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 
